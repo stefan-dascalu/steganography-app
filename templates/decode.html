@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Steganography App - Decode</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Steganography App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/image/encode">Encode</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/image/decode">Decode</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <h1 class="text-primary">Decode Message</h1>
+        <form method="post" action="/image/decode" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file" class="text-secondary">Encoded Image:</label>
+                <input type="file" class="form-control-file" id="file" name="file" accept="image/png" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Decode</button>
+        </form>
+        {% if message %}
+            <div class="mt-4">
+                <h2 class="text-primary pt-4">Decoded Message:</h2>
+                <p>{{ message }}</p>
+            </div>
+        {% endif %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
